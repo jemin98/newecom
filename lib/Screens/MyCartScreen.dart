@@ -167,40 +167,41 @@ class _MyCartScreenState extends State<MyCartScreen> {
       ),
       body: isLoading == true
           ? LoadingComponent()
-          : cartList.length > 0
-              ? SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ListView.separated(
-                          padding: EdgeInsets.only(left: 5, right: 5),
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            return MyCartComponent(
-                              cartData: cartList[index],
-                              onRemove: () {
-                                setState(() {
-                                  cartList.removeAt(index);
-                                });
-                              },
-                              onQtyUpdate: () {
-                                getCartTotal();
-                              },
-                            );
+          : /*cartList.length > 0
+              ? */
+          SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListView.separated(
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (BuildContext context, int index) {
+                        return MyCartComponent(
+                          cartData: index /*cartList[index]*/,
+                          onRemove: () {
+                            setState(() {
+                              cartList.removeAt(index);
+                            });
                           },
-                          itemCount: cartList.length,
-                          separatorBuilder: (BuildContext context, int index) =>
-                              Container(
-                                height: 7,
-                                color: Colors.grey[300],
-                              )),
-                    ],
-                  ),
-                )
-              : NoFoundComponent(
+                          onQtyUpdate: () {
+                            /*   getCartTotal();*/
+                          },
+                        );
+                      },
+                      itemCount: 2 /*cartList.length*/,
+                      separatorBuilder: (BuildContext context, int index) =>
+                          Container(
+                            height: 7,
+                            color: Colors.grey[300],
+                          )),
+                ],
+              ),
+            ),
+      /*    : NoFoundComponent(
                   ImagePath: 'assets/noProduct.png',
                   Title: 'Your cart is empty',
-                  fromWhere: "Cart"),
+                  fromWhere: "Cart"),*/
       bottomNavigationBar: isBottomLoading == true
           ? LoadingComponent()
           : Container(
@@ -221,33 +222,35 @@ class _MyCartScreenState extends State<MyCartScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Rs: ${Total}",
+                                "Rs: 200" /*${Total}*/,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
-                              Text("Saved  Rs. ${Save}"),
+                              Text("Saved  Rs. 312" /*${Save}*/),
                             ],
                           )
                         : Container(),
                   ),
-                  priceList[0]["Total"] != 0
-                      ? Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4.0),
-                                side: BorderSide(color: Colors.red)),
-                            onPressed: () {
-                              Navigator.push(context,
-                                  SlideLeftRoute(page: CheckoutPage()));
-                            },
-                            color: Colors.red,
-                            textColor: Colors.white,
-                            child: Text("Check out".toUpperCase(),
-                                style: TextStyle(fontSize: 14)),
-                          ),
-                        )
-                      : Container(),
+                  /* priceList[0]["Total"] != 0
+                      ? */
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        /*  side: BorderSide(color: Colors.red)*/
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context, SlideLeftRoute(page: CheckoutPage()));
+                      },
+                      color: appPrimaryMaterialColor,
+                      textColor: Colors.white,
+                      child: Text("Check out".toUpperCase(),
+                          style: TextStyle(fontSize: 14)),
+                    ),
+                  )
+                  /*  : Container(),*/
 /*
             Padding(
               padding: const EdgeInsets.only(right: 8.0),

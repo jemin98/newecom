@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mart_n_cart/Screens/referEarn.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mart_n_cart/Common/Colors.dart';
@@ -18,6 +19,8 @@ import 'package:mart_n_cart/Screens/PromocodePage.dart';
 import 'package:mart_n_cart/Screens/Tearmscondition.dart';
 import 'package:mart_n_cart/transitions/slide_route.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'EditProfile.dart';
 
 class contactUs extends StatefulWidget {
   var contactdata, whtspdata, whtscall, phonedata, emaildata;
@@ -594,32 +597,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0, top: 4.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${CustomerName}",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.grey[600])),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(/*"${CustomerName}"*/ "Sunny",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.grey[600])),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Text(
+                                          /*"${CustomerEmail}"*/ "Sunny9876@gmail.com",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey[600])),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Text(
+                                          /*"${Customerphone}"*/ "9879208321",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.grey[600])),
+                                    )
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: Text("${CustomerEmail}",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.grey[600])),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => EditProfile()),
+                                    );
+                                  },
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: appPrimaryMaterialColor,
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(2.0),
-                                  child: Text("${Customerphone}",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey[600])),
+                                SizedBox(
+                                  width: 1,
                                 )
                               ],
                             ),
@@ -900,6 +926,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left: 12.0),
                         child: Text("My Promocode",
+                            style:
+                                TextStyle(color: Colors.black54, fontSize: 16)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 0.8,
+              color: Colors.grey[300],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, SlideLeftRoute(page: referEarn()));
+                },
+                child: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Image.asset('assets/earning.png',
+                            width: 25, color: Colors.black54),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: Text("Refer & Earn",
                             style:
                                 TextStyle(color: Colors.black54, fontSize: 16)),
                       ),

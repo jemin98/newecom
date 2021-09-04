@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Mart N Cart',
-      home: HomeScreen(),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: 'Lato',

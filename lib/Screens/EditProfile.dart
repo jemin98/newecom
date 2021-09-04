@@ -1,108 +1,49 @@
-import 'dart:io';
-import 'package:dio/dio.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mart_n_cart/Common/Colors.dart';
-import 'package:mart_n_cart/Common/Constant.dart';
-import 'package:mart_n_cart/Common/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mart_n_cart/Screens/HomeScreen.dart';
-import 'package:mart_n_cart/transitions/slide_route.dart';
 
-import 'LoginScreen.dart';
+import 'HomeScreen.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  var Mobile;
-
-  RegistrationScreen({this.Mobile});
-
+class EditProfile extends StatefulWidget {
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  _EditProfileState createState() => _EditProfileState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
-  @override
-  var _fullnameController = new TextEditingController();
-  var _emailController = new TextEditingController();
-  var _phonenumberController = new TextEditingController();
-  final _formkey = new GlobalKey<FormState>();
-  bool isFCMtokenLoading = false;
-  String fcmToken;
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
-  List Registrationdata = [];
+class _EditProfileState extends State<EditProfile> {
+  TextEditingController _fullnameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phonenumberController = TextEditingController();
   bool isLoading = false;
-
   @override
   void initState() {
-    setState(() {
-      _firebaseMessaging.getToken().then((token) {
-        _phonenumberController.text = widget.Mobile;
-        _phonenumberController.text = widget.Mobile;
-        fcmToken = token;
-        print('----------->' + '${token}');
-      });
-    });
-
-    print(_phonenumberController.text);
+    // TODO: implement initState
     super.initState();
+    setState(() {
+      _fullnameController.text = "Sunny";
+      _emailController.text = "Sunny9876@gmail.com";
+      _phonenumberController.text = "9879208321";
+    });
   }
 
-  saveDataToSession(var data) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(Session.customerId, data["CustomerId"].toString());
-    await prefs.setString(Session.CustomerName, data["CustomerName"]);
-    await prefs.setString(Session.CustomerEmailId, data["CustomerEmailId"]);
-    await prefs.setString(Session.CustomerPhoneNo, data["CustomerPhoneNo"]);
-    Navigator.pushAndRemoveUntil(
-        context, SlideLeftRoute(page: HomeScreen()), (route) => false);
-  }
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formkey,
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text("Update Profile"),
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).padding.top +
-                    MediaQuery.of(context).size.height / 13,
-              ),
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
               Padding(
-                padding: const EdgeInsets.only(left: 30.0),
+                padding: const EdgeInsets.only(top: 15.0, left: 12, right: 12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "SIGN UP",
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2.0),
-                      child: Text("Let's Complete's Signup Process",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400)),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                  children: [
                     Text(
                       "Name",
                       style: TextStyle(
@@ -304,38 +245,38 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 13.0, right: 13, top: 50),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 45,
-                  child: RaisedButton(
-                    color: appPrimaryMaterialColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              new LoginScreen()));
-                      if (isLoading == false) _registration();
-                    },
-                    child: isLoading == true
-                        ? CircularProgressIndicator(
-                            valueColor:
-                                new AlwaysStoppedAnimation<Color>(Colors.white),
-                          )
-                        : Text(
-                            "SIGN UP",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 13.0, right: 13, top: 50),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 45,
+                        child: RaisedButton(
+                          color: appPrimaryMaterialColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                  ),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    new HomeScreen()));
+                          },
+                          child: isLoading == true
+                              ? CircularProgressIndicator(
+                                  valueColor: new AlwaysStoppedAnimation<Color>(
+                                      Colors.white),
+                                )
+                              : Text(
+                                  "UPDATE",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 17),
+                                ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -343,41 +284,5 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
       ),
     );
-  }
-
-  _registration() async {
-    if (_formkey.currentState.validate()) {
-      try {
-        final result = await InternetAddress.lookup('google.com');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-          setState(() {
-            isLoading = true;
-          });
-          FormData body = FormData.fromMap({
-            "CustomerName": _fullnameController.text,
-            "CustomerEmailId": _emailController.text,
-            "CustomerPhoneNo": _phonenumberController.text.toString(),
-            "CutomerFCMToken": "${fcmToken}"
-          });
-          Services.postforlist(apiname: 'addCustomer', body: body).then(
-              (responselist) async {
-            if (responselist.length > 0) {
-              saveDataToSession(responselist[0]);
-            } else {
-              Fluttertoast.showToast(msg: " Registration fail");
-            }
-          }, onError: (e) {
-            setState(() {
-              isLoading = false;
-            });
-            print("error on call -> ${e.message}");
-            Fluttertoast.showToast(msg: "something went wrong");
-          });
-        }
-      } on SocketException catch (_) {
-        Fluttertoast.showToast(msg: "No Internet Connection");
-      }
-    } else
-      Fluttertoast.showToast(msg: "Please fill all the fields");
   }
 }

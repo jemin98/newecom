@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "SIGN IN / SIGN UP",
+                    "SIGN IN",
                     style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.w400)),
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0),
-                          child: Text("Mart N Cart",
+                          child: Text("Pratha Store",
                               style: TextStyle(
                                   fontSize: 16,
                                   color: appPrimaryMaterialColor,
@@ -237,6 +237,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Dont't have account yet"),
+                SizedBox(
+                  width: 8,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            new RegistrationScreen()));
+                  },
+                  child: Text(
+                    "SignUp",
+                    style: TextStyle(
+                        color: appPrimaryMaterialColor,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -299,7 +321,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               saveDataToSession(responselist[0]);
                             },
                           )));*/
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
                 }
               } else {
                 /*Navigator.of(context).push(MaterialPageRoute(
@@ -309,7 +332,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             saveDataToSession(responselist[0]);
                           },
                         )));*/
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
               }
             }
           }, onError: (e) {

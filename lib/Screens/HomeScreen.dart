@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 15,
                               color: Colors.white,
                               fontWeight: FontWeight.w500)),
-                      Text("${CustomerName}",
+                      Text(/*"${CustomerName}"*/ "Sunny",
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.white,
@@ -111,6 +111,17 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: appPrimaryMaterialColor,
+          child: Icon(Icons.phone),
+          onPressed: () {
+            showDialog(
+              context: context,
+              // builder: (BuildContext context) => _buildPopupDialog(context),
+              builder: (BuildContext context) => callback(),
+            );
+          },
         ),
         body: isLoading == true
             ? LoadingComponent()
@@ -140,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     images: _bannerList
                                         .map((item) => Container(
                                             child: Image.network(
-                                              "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
+                                                "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
                                                 /*IMG_URL + item["BannerImage"],*/
                                                 fit: BoxFit.fill)))
                                         .toList(),
@@ -369,5 +380,145 @@ class _HomeScreenState extends State<HomeScreen> {
       });
       Fluttertoast.showToast(msg: "No Internet Connection");
     }
+  }
+}
+
+class callback extends StatefulWidget {
+  @override
+  _callbackState createState() => _callbackState();
+}
+
+class _callbackState extends State<callback> {
+  TextEditingController _numController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    topLeft: Radius.circular(20.0)),
+                color: appPrimaryMaterialColor,
+              ),
+              height: MediaQuery.of(context).size.height * 0.08,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Request Call",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                child: TextFormField(
+                  controller: _numController,
+                  decoration: InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 12),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff6264a7)),
+                        borderRadius: BorderRadius.circular(8.0)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xff6264a7)),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xff6264a7)),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    hintText: "Mobile Number",
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    _numController.clear();
+                    Navigator.pop(context);
+                  },
+                  child: Card(
+                    color: Colors.grey,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Center(
+                        child: Text(
+                          "Close",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print("yes");
+                    if (_numController.text == "") {
+                      Fluttertoast.showToast(msg: "Please Add Mobile Number");
+                    } else {
+                      setState(() {});
+                    }
+                  },
+                  child: Card(
+                    color: Theme.of(context).primaryColor,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Center(
+                        child: Text(
+                          "Request",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
