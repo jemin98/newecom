@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.w400)),
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0),
-                          child: Text("Mart N Cart",
+                          child: Text("Pratha Store",
                               style: TextStyle(
                                   fontSize: 16,
                                   color: appPrimaryMaterialColor,

@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List _categoryList = [];
   List _suggestedProductList = [];
   List _Offerlist = [];
+  List<dynamic> Imageofsldier = ["assets/p2.jpg","assets/p1.jpg"];
   bool isLoading = false;
   bool iscartlist = false;
   Location location = new Location();
@@ -137,13 +138,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                     dotVerticalPadding: 10.0,
                                     showIndicator: true,
                                     indicatorBgPadding: 7.0,
-                                    images: _bannerList
+                                    images: Imageofsldier.map(
+                                            (item) => Container(
+                                          child: Center(
+                                              child: Image.asset(
+                                                item,
+                                                fit: BoxFit.cover,
+
+                                              )),
+                                        )).toList(),
+
+                                    /* _bannerList
                                         .map((item) => Container(
                                             child: Image.network(
-                                              "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
-                                                /*IMG_URL + item["BannerImage"],*/
+                                              // "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
+                                                IMG_URL + item["BannerImage"],
                                                 fit: BoxFit.fill)))
-                                        .toList(),
+                                        .toList(),*/
                                   ),
                                 ),
                               )
@@ -178,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: MediaQuery.of(context).size.width,
                             child: Card(
                                 child:
-                                    TitlePattern(title: "Suggested Products")),
+                                    TitlePattern(title: "Products")),
                           ),
                         ),
                         SizedBox(
@@ -191,26 +202,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                     product: _suggestedProductList[index]);
                               }),
                         ),
+
+                        SizedBox(height: 15,),
+
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0, right: 4.0),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             child: Card(
-                              child: TitlePattern(title: "Offers"),
-                            ),
+                                child:
+                                TitlePattern(title: "New Arrivals")),
                           ),
                         ),
-                        // ignore: missing_return
-                        ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (BuildContext context, int index) {
-                            return OfferComponent(
-                              Offerdata: _Offerlist[index],
-                            );
-                          },
-                          itemCount: _Offerlist.length,
-                        )
+                        SizedBox(height: 15,),
+                        SizedBox(
+                          child: ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: /*_suggestedProductList.length,*/4,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return ProductComponent(
+                                    product: _suggestedProductList[index]);
+                              }),
+                        ),
                       ],
                     ),
                   )

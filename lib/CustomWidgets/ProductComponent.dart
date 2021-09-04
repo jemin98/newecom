@@ -163,7 +163,10 @@ class _ProductComponentState extends State<ProductComponent> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    widget.product["PackInfo"][0]["ProductdetailImages"][0] !=
+                    Container(height: 110,
+                    width: 110,
+                    child: Image.asset("assets/mp_lokwan.png",fit: BoxFit.cover,),),
+                   /* widget.product["PackInfo"][0]["ProductdetailImages"][0] !=
                             ""
                         ? Image.network(
                             '${IMG_URL + widget.product["PackInfo"][0]["ProductdetailImages"][0]}',
@@ -174,7 +177,7 @@ class _ProductComponentState extends State<ProductComponent> {
                             'assets/no-image.png',
                             width: 110,
                             height: 110,
-                          ),
+                          ),*/
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
@@ -182,13 +185,13 @@ class _ProductComponentState extends State<ProductComponent> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "${widget.product["ProductName"]}",
+                            Text("Product",
+                              /*"${widget.product["ProductName"]}",*/
                               style: TextStyle(fontSize: 15),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Text(
-                              "${widget.product["SubcategoryName"]}",
+                            Text("Sub Category",
+                              // "${widget.product["SubcategoryName"]}",
                               style:
                                   TextStyle(fontSize: 14, color: Colors.grey),
                               overflow: TextOverflow.ellipsis,
@@ -263,7 +266,7 @@ class _ProductComponentState extends State<ProductComponent> {
                                             _addTocart();
                                           }*/
                                         },
-                                        color: Colors.redAccent,
+                                        color: Color(0xFF059983),
                                         child: iscartLoading == true
                                             ? Container(
                                                 height: MediaQuery.of(context)

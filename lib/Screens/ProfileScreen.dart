@@ -4,6 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mart_n_cart/Screens/Allproducts.dart';
+import 'package:mart_n_cart/Screens/Contactus.dart';
+import 'package:mart_n_cart/Screens/Faq.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mart_n_cart/Common/Colors.dart';
@@ -57,30 +60,35 @@ class _contactUsState extends State<contactUs> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      content: Column(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Contact Us",
+            style: TextStyle(color: Colors.white, fontSize: 18)),
+      ),
+      body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Align(
-              alignment: Alignment.topRight,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 9.0, top: 3),
-                  child: Icon(
-                    Icons.clear,
-                    size: 20,
-                    color: Colors.grey,
+          /* Align(
+                alignment: Alignment.topRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 9.0, top: 3),
+                    child: Icon(
+                      Icons.clear,
+                      size: 20,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-              )),
+                )),*/
           Container(
             // color: Colors.redAccent,
             height: 100,
             width: 120,
-            child: Image.asset("assets/basket.png"),
+            child: Image.asset("assets/pratha.png"),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 50.0, top: 8),
@@ -98,8 +106,8 @@ class _contactUsState extends State<contactUs> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        "${widget.emaildata}",
+                      child: Text("prathacustomercare@gmail.com"
+                        /*"${widget.emaildata}"*/,
                         style: TextStyle(
                             color: Colors.black54,
                             fontSize: 14,
@@ -123,7 +131,7 @@ class _contactUsState extends State<contactUs> {
                       Padding(
                         padding: const EdgeInsets.only(left: 7.0),
                         child: Text(
-                          "${widget.phonedata}",
+                          /*"${widget.phonedata}"*/"76989 76989",
                           style: TextStyle(
                               color: Colors.black54,
                               fontSize: 12,
@@ -147,7 +155,7 @@ class _contactUsState extends State<contactUs> {
                       Padding(
                         padding: const EdgeInsets.only(left: 5.0),
                         child: Text(
-                          "${widget.whtscall}",
+                          /*"${widget.whtscall}",*/"76989 76989",
                           style: TextStyle(
                               color: Colors.black54,
                               fontSize: 12,
@@ -220,7 +228,7 @@ class _contactUsState extends State<contactUs> {
           ),
           Padding(
             padding:
-                const EdgeInsets.only(top: 13.0, bottom: 25, left: 9, right: 9),
+            const EdgeInsets.only(top: 13.0, bottom: 25, left: 9, right: 9),
             child: Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
@@ -241,17 +249,17 @@ class _contactUsState extends State<contactUs> {
               ),
             ),
           ),
-          Container(
-            height: 4,
-            color: appPrimaryMaterialColor,
-            width: MediaQuery.of(context).size.width,
-          ),
+          /*Container(
+              height: 4,
+              color: appPrimaryMaterialColor,
+              width: MediaQuery.of(context).size.width,
+            ),*/
         ],
       ),
-      contentPadding: const EdgeInsets.only(
+     /* contentPadding: const EdgeInsets.only(
         top: 6.0,
         bottom: 0.0,
-      ),
+      ),*/
     );
   }
 }
@@ -807,8 +815,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.all(14.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>AllProducts()));
+                },
+                child: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Image.asset('assets/shoppingcart.png',
+                            width: 25, color: Colors.black54),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: Text("All Products",
+                            style:
+                            TextStyle(color: Colors.black54, fontSize: 16)),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 0.8,
+              color: Colors.grey[300],
+            ),
+
+
+           
+            
+            Padding(
+              padding: const EdgeInsets.all(14),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context, SlideLeftRoute(page: MyOrder()));
@@ -826,13 +869,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(left: 12.0),
                         child: Text("My Orders",
                             style:
-                                TextStyle(color: Colors.black54, fontSize: 16)),
+                            TextStyle(color: Colors.black54, fontSize: 16)),
                       ),
                     ],
                   ),
                 ),
               ),
             ),
+            
+            
+            
             Container(
               height: 0.8,
               color: Colors.grey[300],
@@ -954,13 +1000,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.all(14.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>FAQ()));
+                  /*Navigator.push(
                       context,
                       SlideLeftRoute(
                           page: TearmsCon(
                         tearmscondition: generaldatalist[0]["SettingFAQ"],
                         title: "FAQ",
-                      )));
+                      )));*/
                 },
                 child: Container(
                   color: Colors.white,
@@ -997,7 +1044,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           page: TearmsCon(
                         tearmscondition: generaldatalist[0]
                             ["SettingTermsConditionURL"],
-                        title: "Tearms & Condition",
+                        title: "Terms & Condition",
                       )));
                 },
                 child: Container(
@@ -1011,7 +1058,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 12.0),
-                        child: Text("Tearms & Condition",
+                        child: Text("Terms & Condition",
                             style:
                                 TextStyle(color: Colors.black54, fontSize: 16)),
                       ),
@@ -1029,6 +1076,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: GestureDetector(
                 onTap: () {
                   _contactUs();
+                  /*Navigator.push(context, MaterialPageRoute(builder: (context)=>Contactus()));*/
                 },
                 child: Container(
                   color: Colors.white,
@@ -1088,9 +1136,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 30,
-        child: Center(child: Text("Version 1.0.0")),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 30,
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(height: 18,
+                child:Image.asset('assets/whatsapp.jpg',fit: BoxFit.cover,),
+              ),
+              Container(height: 28,
+                child:Image.asset('assets/instagram.jpg',fit: BoxFit.cover,),
+              ),
+              Container(height: 18,
+                child:Image.asset('assets/facebook.png',fit: BoxFit.cover,),
+              ),
+              Container(height: 18,
+                child:Image.asset('assets/twitter.png',fit: BoxFit.cover,),
+              ),
+
+            ],
+          ),/*Center(child: Text("Version 1.0.0")),*/
+        ),
       ),
     );
   }

@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+class FAQ extends StatefulWidget {
 
-class Contactus extends StatefulWidget {
   @override
-  _ContactusState createState() => _ContactusState();
+  _FAQState createState() => _FAQState();
 }
 
-class _ContactusState extends State<Contactus> {
+class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Contact Us",
+        title: Text("FAQ",
             style: TextStyle(color: Colors.white, fontSize: 18)),
       ),
-      body: Container(
-
-      ),
+      body: Container(),
     );
   }
 }

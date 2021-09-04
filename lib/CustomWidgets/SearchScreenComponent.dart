@@ -146,13 +146,16 @@ class _SearchScreenComponentState extends State<SearchScreenComponent> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    packageInfo[0]["ProductdetailImages"] != ""
+                    Container(height: 110,
+                      width: 110,
+                      child: Image.asset("assets/mp_lokwan.png",fit: BoxFit.cover,),),
+                    /*packageInfo[0]["ProductdetailImages"] != ""
                         ? Image.network(
                             "${IMG_URL + packageInfo[0]["ProductdetailImages"][0]}",
                             height: 80,
                             width: 80)
                         : Image.asset("assets/no-image.png",
-                            height: 80, width: 80),
+                            height: 80, width: 80),*/
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
@@ -160,13 +163,13 @@ class _SearchScreenComponentState extends State<SearchScreenComponent> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "${widget.searchdata["ProductName"]}",
+                            Text("Product",
+                              /*"${widget.searchdata["ProductName"]}",*/
                               style: TextStyle(fontSize: 15),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Text(
-                              "${packageInfo[currentIndex]["ProductdetailBrandname"]}",
+                            Text("Sub Category",
+                              /*"${packageInfo[currentIndex]["ProductdetailBrandname"]}",*/
                               style:
                                   TextStyle(fontSize: 12, color: Colors.grey),
                               overflow: TextOverflow.ellipsis,
@@ -233,7 +236,7 @@ class _SearchScreenComponentState extends State<SearchScreenComponent> {
                                         onPressed: () {
                                           _addTocart();
                                         },
-                                        color: Colors.redAccent,
+                                        color: Color(0xFF059983),
                                         child: iscartLoading == true
                                             ? Container(
                                                 height: MediaQuery.of(context)
