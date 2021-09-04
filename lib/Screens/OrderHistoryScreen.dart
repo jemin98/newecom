@@ -441,7 +441,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                       SizedBox(
                                         height: 8,
                                       ),
-                                      Text("PickedUp"),
+                                      Text("Pickedup"),
                                       SizedBox(
                                         height: 8,
                                       ),
