@@ -222,7 +222,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   /*if (isLoading == false) {
                     _login();
                   }*/
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>VerificationScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VerificationScreen(
+                                mobileNum: _loginController.text,
+                                onSuccess: () {
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, '/HomeScreen', (route) => false);
+                                },
+                              )));
                 },
                 child: isLoading
                     ? CircularProgressIndicator(

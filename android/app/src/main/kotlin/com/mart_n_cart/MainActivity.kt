@@ -1,4 +1,4 @@
-package com.mart_n_cart
+package com.prathastore
 
 import io.flutter.embedding.android.FlutterActivity
 

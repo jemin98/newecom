@@ -1,65 +1,33 @@
 {
   "project_info": {
-    "project_number": "648635155534",
-    "project_id": "mart-n-cart",
-    "storage_bucket": "mart-n-cart.appspot.com"
+    "project_number": "601556956929",
+    "project_id": "prathastore-1938b",
+    "storage_bucket": "prathastore-1938b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:648635155534:android:ed6250324074f5e703af1f",
+        "mobilesdk_app_id": "1:601556956929:android:8717b45cf6f11258c64d00",
         "android_client_info": {
-          "package_name": "com.mart_n_cart"
+          "package_name": "com.prathastore"
         }
       },
       "oauth_client": [
         {
-          "client_id": "648635155534-0avqmcrg0eioah1tnvh89ej81gf3ouvl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mart_n_cart",
-            "certificate_hash": "17caeea06fd73de328e9a2c2baa9357b6d63e10d"
-          }
-        },
-        {
-          "client_id": "648635155534-7nt9nklcksr6b4659c4dv1ocb3vfug9r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mart_n_cart",
-            "certificate_hash": "43cc4ac1fd18d3d6cad596a48e184a80b34e65dc"
-          }
-        },
-        {
-          "client_id": "648635155534-cq5kvlk3v6bdrlkl0hd4codos2gmvre6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mart_n_cart",
-            "certificate_hash": "a8ede49194c96dfd2416981bf6dfc7c2d47750af"
-          }
-        },
-        {
-          "client_id": "648635155534-k65sf5477ba99gqkd289ktcohtcbh3ia.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mart_n_cart",
-            "certificate_hash": "bee33d8daf565f85182b6e0a2f58e25c229e5ced"
-          }
-        },
-        {
-          "client_id": "648635155534-9lcgsgqtvkdnfvllvoj3b99u8196nm7e.apps.googleusercontent.com",
+          "client_id": "601556956929-etki3l01ctaag12le1aqlcl8c2aouu5u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCM6eHfFujs8TDBlob9IXXypPe3KrY4W_Q"
+          "current_key": "AIzaSyA5kqRw90rjBzadzQux1nnO_LxjmL9cyDA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "648635155534-9lcgsgqtvkdnfvllvoj3b99u8196nm7e.apps.googleusercontent.com",
+              "client_id": "601556956929-etki3l01ctaag12le1aqlcl8c2aouu5u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
