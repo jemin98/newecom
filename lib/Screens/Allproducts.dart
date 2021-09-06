@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mart_n_cart/Common/services.dart';
 import 'package:mart_n_cart/CustomWidgets/ProductComponent.dart';
+import 'package:mart_n_cart/Providers/transitions/slide_route.dart';
+
+import 'FilterScreen.dart';
 class AllProducts extends StatefulWidget {
 
   @override
@@ -65,6 +68,12 @@ void  initState(){
         centerTitle: true,
         title: Text("All Products",
             style: TextStyle(color: Colors.white, fontSize: 18)),
+        actions: [
+          GestureDetector(onTap: () {
+            Navigator.push(context,
+                SlideLeftRoute(page: FilterScreen()));
+          },child: Icon(Icons.more_horiz)),
+        ],
       ),
       body:  SingleChildScrollView(
         child: Container(

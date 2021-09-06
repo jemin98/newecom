@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "SIGN IN / SIGN UP",
+                    "SIGN IN",
                     style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,
@@ -219,9 +219,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 onPressed: () {
-                  if (isLoading == false) {
+                  /*if (isLoading == false) {
                     _login();
-                  }
+                  }*/
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>VerificationScreen()));
                 },
                 child: isLoading
                     ? CircularProgressIndicator(
@@ -237,13 +238,35 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Dont't have account yet"),
+                SizedBox(
+                  width: 8,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            new RegistrationScreen()));
+                  },
+                  child: Text(
+                    "SignUp",
+                    style: TextStyle(
+                        color: appPrimaryMaterialColor,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
     );
   }
 
-  _login() async {
+  /*_login() async {
     if (_formkey.currentState.validate()) {
       try {
         final result = await InternetAddress.lookup('google.com');
@@ -292,24 +315,31 @@ class _LoginScreenState extends State<LoginScreen> {
                             Mobile: _loginController.text,
                           )));
                 } else {
-                  /*Navigator.of(context).push(MaterialPageRoute(
+                  */
+
+/*Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) => new VerificationScreen(
                             mobile: _loginController.text,
                             onLoginSuccess: () {
                               saveDataToSession(responselist[0]);
                             },
                           )));*/
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+/*
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
                 }
               } else {
-                /*Navigator.of(context).push(MaterialPageRoute(
+                */
+/*Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => new VerificationScreen(
                           mobile: _loginController.text,
                           onLoginSuccess: () {
                             saveDataToSession(responselist[0]);
                           },
                         )));*/
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+/*
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
               }
             }
           }, onError: (e) {
@@ -326,9 +356,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       Fluttertoast.showToast(msg: "Please fill mobile number");
     }
-  }
-
-  /*_OTPStatus() async {
+  }*/
+/*_OTPStatus() async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {

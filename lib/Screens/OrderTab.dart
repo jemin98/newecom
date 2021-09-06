@@ -5,7 +5,9 @@ import 'package:mart_n_cart/Screens/OrderHistoryScreen.dart';
 
 class OrderTab extends StatefulWidget {
   var OrderId;
-  OrderTab({this.OrderId});
+  String pending;
+
+  OrderTab({this.OrderId, this.pending});
   @override
   _OrderTabState createState() => _OrderTabState();
 }
@@ -35,8 +37,10 @@ class _OrderTabState extends State<OrderTab> {
                 ]),
             Expanded(
               child: TabBarView(children: [
-                OrderHistoryScreen(),
-                OrderDetailScreen(orderid: widget.OrderId)
+                OrderHistoryScreen(
+                  pending: widget.pending,
+                ),
+                OrderDetailScreen(orderid: "24" /*widget.OrderId*/)
               ]),
             )
           ],

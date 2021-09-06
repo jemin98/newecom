@@ -71,31 +71,32 @@ class _MyOrderState extends State<MyOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 1,
-        title: Text("My Order",
-            style: TextStyle(color: Colors.white, fontSize: 18)),
-      ),
-      body: isorderDetailLoading == true
-          ? LoadingComponent()
-          : MyOrderList.length > 0
-              ? ListView.separated(
-                  padding: EdgeInsets.only(top: 10),
-                  physics: BouncingScrollPhysics(),
-                  itemCount: MyOrderList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return MyorderComponent(
-                      MyOrderData: MyOrderList[index],
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) =>
-                      Container(
-                    color: Colors.white,
-                    height: 10,
-                  ),
-                )
-              : Column(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 1,
+          title: Text("My Order",
+              style: TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+        body: isorderDetailLoading == true
+            ? LoadingComponent()
+            : /*MyOrderList.length > 0
+              ?*/
+            ListView.separated(
+                padding: EdgeInsets.only(top: 10),
+                physics: BouncingScrollPhysics(),
+                itemCount: 2 /*MyOrderList.length*/,
+                itemBuilder: (BuildContext context, int index) {
+                  return MyorderComponent(
+                    MyOrderData: index /*MyOrderList[index]*/,
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    Container(
+                  color: Colors.white,
+                  height: 10,
+                ),
+              )
+        /* : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     NoFoundComponent(
@@ -103,7 +104,7 @@ class _MyOrderState extends State<MyOrder> {
                       Title: "No Data Found",
                     ),
                   ],
-                ),
-    );
+                ),*/
+        );
   }
 }

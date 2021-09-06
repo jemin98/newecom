@@ -32,7 +32,7 @@ class _MyCartComponentState extends State<MyCartComponent> {
     setState(() {
       Qty++;
     });
-    _updateCart();
+    // _updateCart();
   }
 
   void remove() {
@@ -40,14 +40,14 @@ class _MyCartComponentState extends State<MyCartComponent> {
       setState(() {
         Qty--;
       });
-      _updateCart();
+      // _updateCart();
     }
   }
 
   @override
   void initState() {
     setState(() {
-      Qty = int.parse("${widget.cartData["CartQuantity"]}");
+      Qty = int.parse("1" /*"${widget.cartData["CartQuantity"]}"*/);
     });
   }
 
@@ -72,6 +72,17 @@ class _MyCartComponentState extends State<MyCartComponent> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(
+                    "assets/bajra.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              /* Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: widget.cartData["PackInfo"][0]["ProductdetailImages"]
                             [0] !=
@@ -83,7 +94,7 @@ class _MyCartComponentState extends State<MyCartComponent> {
                       )
                     : Image.asset("assets/no-image.png",
                         width: 120, height: 120),
-              ),
+              ),*/
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -91,7 +102,8 @@ class _MyCartComponentState extends State<MyCartComponent> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("${widget.cartData["ProductName"]}",
+                      Text(
+                          /*"${widget.cartData["ProductName"]}"*/ "Product ${widget.cartData + 1}",
                           style: TextStyle(fontSize: 15)),
                       RichText(
                         text: TextSpan(
@@ -100,7 +112,7 @@ class _MyCartComponentState extends State<MyCartComponent> {
                             children: <TextSpan>[
                               TextSpan(
                                 text: "${Inr_Rupee}" +
-                                    "${widget.cartData["PackInfo"][0]["ProductdetailMRP"]}",
+                                    /*"${widget.cartData["PackInfo"][0]["ProductdetailMRP"]}"*/ "256",
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 14,
@@ -113,7 +125,7 @@ class _MyCartComponentState extends State<MyCartComponent> {
                           Expanded(
                             child: Text(
                                 " $Inr_Rupee " +
-                                    "${widget.cartData["PackInfo"][0]["ProductdetailSRP"]}",
+                                    /* "${widget.cartData["PackInfo"][0]["ProductdetailSRP"]}"*/ "100",
                                 style: TextStyle(
                                     fontSize: 17,
                                     color: Colors.black,
@@ -126,7 +138,7 @@ class _MyCartComponentState extends State<MyCartComponent> {
                                 Qty == 1
                                     ? GestureDetector(
                                         onTap: () {
-                                          _removefromcart();
+                                          // _removefromcart();
                                         },
                                         child: iscartremoveLoading == true
                                             ? Container(

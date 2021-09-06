@@ -33,6 +33,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   List packageInfo = [];
   List packageImageList = [];
   String CustomerId;
+  bool isWish = false;
 
   getlocaldata() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -96,42 +97,67 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 12.0, left: 18.0, right: 10.0),
-                      child: Text("${productdetail[0]["ProductName"]}",
+                      child: Text(
+                          /*"${productdetail[0]["ProductName"]}"*/ "Pratha MP Sehore Atta",
                           style: TextStyle(fontSize: 16)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 12.0, top: 4.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                                "${packageInfo.length > 0 ? Inr_Rupee + packageInfo[currentIndex]["ProductdetailSRP"] : productdetail[0]["ProductSrp"]}",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: RichText(
-                              text: TextSpan(
-                                  text: 'MRP: ',
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 13),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text:
-                                          "${packageInfo.length > 0 ? Inr_Rupee + packageInfo[currentIndex]["ProductdetailMRP"] : productdetail[0]["ProductMrp"]}",
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                    "${packageInfo.length > 0 ? Inr_Rupee + packageInfo[currentIndex]["ProductdetailSRP"] : productdetail[0]["ProductSrp"]}",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: RichText(
+                                  text: TextSpan(
+                                      text: 'MRP: ',
                                       style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 15,
-                                          decoration:
-                                              TextDecoration.lineThrough),
-                                    )
-                                  ]),
-                            ),
+                                          color: Colors.grey, fontSize: 13),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text:
+                                              "${packageInfo.length > 0 ? Inr_Rupee + packageInfo[currentIndex]["ProductdetailMRP"] : productdetail[0]["ProductMrp"]}",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 15,
+                                              decoration:
+                                                  TextDecoration.lineThrough),
+                                        )
+                                      ]),
+                                ),
+                              ),
+                            ],
                           ),
+                          SizedBox(
+                            width: 100,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isWish = !isWish;
+                                });
+                              },
+                              child: Icon(
+                                isWish == false
+                                    ? Icons.favorite_border
+                                    : Icons.favorite,
+                                color: Colors.red,
+                                size: 30,
+                              )),
+                          SizedBox(
+                            width: 1,
+                          )
                         ],
                       ),
                     ),
@@ -140,20 +166,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Column(
                           children: [
                             SizedBox(
-                                height: 250,
-                                width: MediaQuery.of(context).size.width,
-                                child: Image.network(IMG_URL +
-                                    packageImageList[currentImageIndex])),
+                              height: 250,
+                              width: MediaQuery.of(context).size.width,
+                              child: Image.asset("assets/bajra.png"),
+                              /*Image.network(IMG_URL +
+                                    packageImageList[currentImageIndex])*/
+                            ),
                             SizedBox(
                               height: 60,
                               child: ListView.builder(
-                                  itemCount: packageImageList.length,
+                                  itemCount: 1 /*packageImageList.length*/,
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
                                         setState(() {
-                                          currentImageIndex = index;
+                                          /*   currentImageIndex = index;*/
                                         });
                                       },
                                       child: Padding(
@@ -173,10 +201,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(2.0),
-                                              child: Image.network(
+                                              child: Image.asset(
+                                                "assets/bajra.png",
+                                                width: 50,
+                                              ), /* Image.network(
                                                   '${IMG_URL + packageInfo[currentIndex]["ProductdetailImages"][index]}',
                                                   fit: BoxFit.cover,
-                                                  width: 50),
+                                                  width: 50),*/
                                             )),
                                       ),
                                     );
@@ -338,10 +369,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               : NoFoundComponent(),
       bottomNavigationBar: Container(
         height: 50,
-        color: Colors.red[400],
+        color: appPrimaryMaterialColor,
         child: GestureDetector(
           onTap: () {
-            _addTocart();
+            /*   _addTocart();*/
             /* if (provider.cartIdList.contains(int.parse(widget.productId))) {
               Navigator.push(context, SlideLeftRoute(page: MyCartScreen()));
             } else {

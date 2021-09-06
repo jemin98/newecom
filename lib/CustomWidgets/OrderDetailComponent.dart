@@ -21,12 +21,12 @@ class _OrderHistoryComponentState extends State<OrderDetailComponent> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 13.0),
-                child: Container(
-                    height: 125,
-                    child: Image.network(
-                        IMG_URL + "${widget.orderDetaildata["ProductImages"]}",
-                        // IMG_URL +"${widget.orderHistorydata["ProductImages"]}",
-                        fit: BoxFit.fill)),
+                child: Center(
+                  child: Container(
+                    height: 120,
+                    width: 110,
+                    child: Image.asset("assets/mp_lokwan.png",fit: BoxFit.cover,),),
+                ),
               ),
               Expanded(
                 child: Padding(
@@ -65,8 +65,8 @@ class _OrderHistoryComponentState extends State<OrderDetailComponent> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 13, top: 5),
-                        child: Text(
-                          "${widget.orderDetaildata["ProductName"]}",
+                        child: Text("Product"
+                          /*"${widget.orderDetaildata["ProductName"]}"*/,
                           // "${widget.ViewOrderdatacom["ProductName"]}",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -76,7 +76,7 @@ class _OrderHistoryComponentState extends State<OrderDetailComponent> {
                       Padding(
                         padding: const EdgeInsets.only(top: 5.0, left: 13),
                         child: Text(
-                          "Rs : " + "${widget.orderDetaildata["ProductSrp"]}",
+                          "Rs : 350" /*+ "${widget.orderDetaildata["ProductSrp"]}"*/,
                           //  "${widget.ViewOrderdatacom["ProductDescription"]}",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 14),

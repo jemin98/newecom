@@ -163,9 +163,12 @@ class _ProductComponentState extends State<ProductComponent> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(height: 110,
-                    width: 110,
-                    child: Image.asset("assets/mp_lokwan.png",fit: BoxFit.cover,),),
+                    Center(
+                      child: Container(
+                      height: 120,
+                      width: 110,
+                      child: Image.asset("assets/mp_lokwan.png",fit: BoxFit.cover,),),
+                    ),
                    /* widget.product["PackInfo"][0]["ProductdetailImages"][0] !=
                             ""
                         ? Image.network(
@@ -190,24 +193,24 @@ class _ProductComponentState extends State<ProductComponent> {
                               style: TextStyle(fontSize: 15),
                               overflow: TextOverflow.ellipsis,
                             ),
-                            Text("Sub Category",
+                           /* Text("Sub Category",
                               // "${widget.product["SubcategoryName"]}",
                               style:
                                   TextStyle(fontSize: 14, color: Colors.grey),
                               overflow: TextOverflow.ellipsis,
-                            ),
+                            ),*/
                             Padding(
                               padding: const EdgeInsets.only(top: 6.0),
                               child: InkWell(
                                 onTap: () {
-                                  showPackageInfo();
+                                  /*showPackageInfo();*/
                                 },
                                 child: Container(
                                   child: Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: Center(
-                                      child: Text(
-                                          "${packageInfo[currentIndex]["ProductdetailName"]}",
+                                      child: Text("1KG",
+                                          /*"${packageInfo[currentIndex]["ProductdetailName"]}",*/
                                           style: TextStyle(fontSize: 10)),
                                     ),
                                   ),

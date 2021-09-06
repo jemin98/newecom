@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart';
@@ -86,10 +87,17 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Row(
               children: [
-                Icon(
+                Container(
+                  height: 50,
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/profile.png'),
+                    radius: 35,
+                  ),
+                ),
+              /*  Icon(
                   Icons.account_box,
                   size: 27,
-                ),
+                ),*/
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Column(
@@ -101,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontSize: 15,
                               color: Colors.white,
                               fontWeight: FontWeight.w500)),
-                      Text("${CustomerName}",
+                      Text(/*"${CustomerName}"*/ "Sunny",
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.white,
@@ -113,6 +121,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: appPrimaryMaterialColor,
+          child: Icon(Icons.phone),
+          onPressed: () {
+            showDialog(
+              context: context,
+              // builder: (BuildContext context) => _buildPopupDialog(context),
+              builder: (BuildContext context) => callback(),
+            );
+          },
+        ),
         body: isLoading == true
             ? LoadingComponent()
             : _dashboardList.length > 0
@@ -123,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 4.0),
                                 child: SizedBox(
-                                  height: 170.0,
+                                  height: 180.0,
                                   width: MediaQuery.of(context).size.width,
                                   child: Carousel(
                                     boxFit: BoxFit.cover,
@@ -151,8 +170,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     /* _bannerList
                                         .map((item) => Container(
                                             child: Image.network(
+<<<<<<< HEAD
                                               // "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
                                                 IMG_URL + item["BannerImage"],
+=======
+                                                "https://cdn.shopify.com/s/files/1/0397/8788/8795/t/8/assets/pf-de7d5e30--banner01-1.jpg",
+                                                /*IMG_URL + item["BannerImage"],*/
+>>>>>>> d02263328f050b0a142fffd096740a4d9b65f884
                                                 fit: BoxFit.fill)))
                                         .toList(),*/
                                   ),
@@ -202,19 +226,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                     product: _suggestedProductList[index]);
                               }),
                         ),
-
-                        SizedBox(height: 15,),
+                        
 
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0, right: 4.0),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
-                            child: Card(
+                            child: Card(color: Color(0xFF059983),
                                 child:
                                 TitlePattern(title: "New Arrivals")),
                           ),
                         ),
-                        SizedBox(height: 15,),
+                        
                         SizedBox(
                           child: ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
@@ -383,5 +406,145 @@ class _HomeScreenState extends State<HomeScreen> {
       });
       Fluttertoast.showToast(msg: "No Internet Connection");
     }
+  }
+}
+
+class callback extends StatefulWidget {
+  @override
+  _callbackState createState() => _callbackState();
+}
+
+class _callbackState extends State<callback> {
+  TextEditingController _numController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.3,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    topLeft: Radius.circular(20.0)),
+                color: appPrimaryMaterialColor,
+              ),
+              height: MediaQuery.of(context).size.height * 0.08,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Request Call",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              child: TextFormField(
+                maxLines: 5,
+                inputFormatters: [LengthLimitingTextInputFormatter(50)],
+                controller: _numController,
+                decoration: InputDecoration(
+                  contentPadding:
+                  EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xff6264a7)),
+                      borderRadius: BorderRadius.circular(8.0)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff6264a7)),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff6264a7)),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  hintText: "Request Call",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    _numController.clear();
+                    Navigator.pop(context);
+                  },
+                  child: Card(
+                    color: Colors.grey,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Center(
+                        child: Text(
+                          "Close",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print("yes");
+                    if (_numController.text == "") {
+                      Fluttertoast.showToast(msg: "Please Add Message");
+                    }
+                    else {
+                      setState(() {});
+                    }
+                  },
+                  child: Card(
+                    color: Theme.of(context).primaryColor,
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Center(
+                        child: Text(
+                          "Request",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

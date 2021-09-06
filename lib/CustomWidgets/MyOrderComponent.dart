@@ -16,12 +16,19 @@ class MyorderComponent extends StatefulWidget {
 }
 
 class _MyorderComponentState extends State<MyorderComponent> {
+  String Pending = "completed";
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            FadeRoute(page: OrderTab(OrderId: widget.MyOrderData["OrderId"])));
+        Navigator.push(
+            context,
+            FadeRoute(
+                page: OrderTab(
+              OrderId: "24",
+              pending: Pending, /*widget.MyOrderData["OrderId"]*/
+            )));
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 17.0),
@@ -56,7 +63,7 @@ class _MyorderComponentState extends State<MyorderComponent> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
                                 child: Text(
-                                    "${widget.MyOrderData["OrderDeliveryDate"]}",
+                                    "04/05/2021" /*"${widget.MyOrderData["OrderDeliveryDate"]}"*/,
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -80,7 +87,8 @@ class _MyorderComponentState extends State<MyorderComponent> {
                                                   fontSize: 14,
                                                   color: Colors.grey[700])),
                                         ),
-                                        Text("${widget.MyOrderData["OrderId"]}",
+                                        Text(
+                                            "${024 + widget.MyOrderData}" /*"${widget.MyOrderData["OrderId"]}"*/,
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 color: Colors.grey[700])),
@@ -107,7 +115,7 @@ class _MyorderComponentState extends State<MyorderComponent> {
                                                     4.0,
                                               ),
                                               Text(
-                                                  "${widget.MyOrderData["OrderTotal"][0]["Total"]}",
+                                                  "200" /*"${widget.MyOrderData["OrderTotal"][0]["Total"]}"*/,
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey[700])),
@@ -118,7 +126,7 @@ class _MyorderComponentState extends State<MyorderComponent> {
                                           padding:
                                               const EdgeInsets.only(right: 5.0),
                                           child: Text(
-                                              "${widget.MyOrderData["OrderStageDropDown"]}"),
+                                              Pending /*"${widget.MyOrderData["OrderStageDropDown"]}"*/),
                                         )
                                       ],
                                     ),
@@ -143,7 +151,7 @@ class _MyorderComponentState extends State<MyorderComponent> {
                                                             Colors.grey[700])),
                                               ),
                                               Text(
-                                                  "${widget.MyOrderData["OrderTotalQty"]}",
+                                                  "2" /*"${widget.MyOrderData["OrderTotalQty"]}"*/,
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey[700])),

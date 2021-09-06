@@ -272,6 +272,50 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10),
+                child: SizedBox(
+                  height: 45,
+                  child: FlatButton(
+                    color: appPrimaryMaterialColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        side: BorderSide(color: Colors.grey[200])),
+                    onPressed: () {
+                      _addAddress();
+                    },
+                    child: isAddressLoading == true
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              valueColor: new AlwaysStoppedAnimation<Color>(
+                                  Colors.white),
+                            ),
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 18,
+                                color: Colors.white,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 3.0),
+                                child: Text(
+                                  "Current Location",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      // color: Colors.grey[700],
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
+              ),
             ])),
       ),
     );

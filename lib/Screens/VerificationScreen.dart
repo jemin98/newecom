@@ -1,3 +1,164 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:mart_n_cart/Common/Colors.dart';
+import 'package:mart_n_cart/Screens/HomeScreen.dart';
+import 'package:pin_code_text_field/pin_code_text_field.dart';
+import 'package:mart_n_cart/Screens/RegistrationScreen.dart';
+
+class VerificationScreen extends StatefulWidget {
+
+
+  @override
+  _VerificationScreenState createState() => _VerificationScreenState();
+}
+
+class _VerificationScreenState extends State<VerificationScreen> {
+
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController txtOTP = new TextEditingController();
+  String verificationId;
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.grey, size: 21),
+            onPressed: () {
+              Navigator.of(context).pop();
+            }),
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).padding.top + 2,
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      "Enter Verification Code",
+                      style: TextStyle(
+                          fontSize: 23,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text("We have sent the verification code on",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400)),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 80),
+                    child: PinCodeTextField(
+                      controller: txtOTP,
+                      autofocus: false,
+                      wrapAlignment: WrapAlignment.center,
+                      highlight: true,
+                      pinBoxHeight: 38,
+                      pinBoxWidth: 38,
+                      pinBoxRadius: 8,
+                      highlightColor: Colors.grey,
+                      defaultBorderColor: Colors.grey,
+                      hasTextBorderColor: Colors.black,
+                      maxLength: 6,
+                      pinBoxDecoration:
+                      ProvidedPinBoxDecoration.defaultPinBoxDecoration,
+                      pinTextStyle: TextStyle(fontSize: 17),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 35.0),
+                    child: Text("Enter verification code you received on SMS",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        )),
+                  ),
+                  Padding(
+                    padding:
+                    const EdgeInsets.only(left: 13.0, right: 13, top: 30),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 45,
+                      child: RaisedButton(
+                        color: appPrimaryMaterialColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                        },
+                        child:  Text(
+                          "Verify",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17),
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 35.0),
+                      child: Text("Resend OTP",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+    /*if (isLoading == false) {
+                    _login();
+                  }*/
+    /*
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                  },
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );*/
+  }
+}
+
+
+
+/*
 import 'dart:developer';
 import 'dart:io';
 
@@ -133,6 +294,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     });
   }
 
+*/
 /*
   saveDataToSession() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -149,7 +311,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
         context, SlideLeftRoute(page: HomeScreen()), (route) => false);
   }
 */
-
 /*
   _sendOTP() async {
     var rnd = new Random();
@@ -196,6 +357,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
     }
   }
 */
+/*
+
 
   @override
   Widget build(BuildContext context) {
@@ -360,3 +523,4 @@ class _VerificationScreenState extends State<VerificationScreen> {
     }
   }
 }
+*/

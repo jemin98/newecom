@@ -24,11 +24,11 @@ class _OfferComponentState extends State<OfferComponent> {
               SubCategoryId: widget.Offerdata["SubcategoryId"],
             )));
       },
-      child: Padding(
-        padding: const EdgeInsets.only(left: 7.0, right: 7),
-        child: Container(
-          color: Colors.grey[200],
-          child: Column(
+      child: Container(
+        child: Text("Your Offers will be displayed here"),
+        color: Colors.grey[200],
+
+        /*child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(IMG_URL + widget.Offerdata["OfferImage"],
@@ -44,8 +44,7 @@ class _OfferComponentState extends State<OfferComponent> {
               ),
               Text("${widget.Offerdata["SubcategoryDesc"]}"),
             ],
-          ),
-        ),
+          ),*/
       ),
     );
   }

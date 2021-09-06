@@ -189,64 +189,68 @@ class _CheckoutPageState extends State<CheckoutPage> {
             Container(
               color: Colors.white,
               width: MediaQuery.of(context).size.width,
-              child: AddressId == null
+              child:
+                  /* AddressId == null
                   ? FlatButton(
                       onPressed: () {
                         _changeAddress(context);
                       },
                       child: Text("+ Add Address"))
-                  : Padding(
-                      padding: const EdgeInsets.all(9.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.location_on, size: 18),
-                                  Text("Deliver to: ${AddressType}",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  _changeAddress(context);
-                                },
-                                child: Container(
-                                  child: Center(
-                                      child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text("Change",
-                                        style: TextStyle(fontSize: 13)),
-                                  )),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1, color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(4.0)),
-                                ),
-                              )
-                            ],
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  :*/
+                  Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.location_on, size: 18),
+                            Text("Deliver to: Home" /*${AddressType}*/,
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        InkWell(
+                          onTap: () {
+                            // _changeAddress(context);
+                          },
+                          child: Container(
+                            child: Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text("Change",
+                                  style: TextStyle(fontSize: 13)),
+                            )),
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(width: 1, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(4.0)),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 6.0, left: 4.0, bottom: 4.0),
-                            child: Text(
-                                "${AddressHouseNo}-" +
-                                    "${AddressAppartmentName}" +
-                                    "," +
-                                    "${AddressStreet}" +
-                                    "\n${AddressLandmark}, " +
-                                    "${AddressArea} ," +
-                                    "${City}-" +
-                                    "${AddressPincode}",
-                                style: TextStyle(color: Colors.grey[700])),
-                          ),
-                        ],
-                      ),
+                        )
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 6.0, left: 4.0, bottom: 4.0),
+                      child: Text(
+                          "C-548, Silvar hub new adajan chowk " +
+                              "," +
+                              "\nmumbai - 395004",
+                          /* "${AddressHouseNo}-" +
+                              "${AddressAppartmentName}" +
+                              "," +
+                              "${AddressStreet}" +
+                              "\n${AddressLandmark}, " +
+                              "${AddressArea} ," +
+                              "${City}-" +
+                              "${AddressPincode}",*/
+                          style: TextStyle(color: Colors.grey[700])),
+                    ),
+                  ],
+                ),
+              ),
             ),
             provider.settingList[0]["SettingShowReedemPoints"] == true
                 ? Padding(
@@ -373,7 +377,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0, top: 8),
-                              child: Text("Payment Mode",
+                              child: Text("Delivery Mode",
                                   style:
                                       TextStyle(fontWeight: FontWeight.bold)),
                             ),
@@ -388,7 +392,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           PaymentMode = "Cash";
                                         });
                                       },
-                                      child: Text("COD",
+                                      child: Text("Normal",
                                           style: TextStyle(
                                               color: PaymentMode == "Cash"
                                                   ? Colors.white
@@ -402,7 +406,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           PaymentMode = "Online";
                                         });
                                       },
-                                      child: Text("Online",
+                                      child: Text("Express",
                                           style: TextStyle(
                                               color: PaymentMode != "Cash"
                                                   ? Colors.white
@@ -446,7 +450,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("${specificationList[index]["Text1"]}"),
-                                  Text("${specificationList[index]["Text3"]}"),
+                                  Text(
+                                      /*"${specificationList[index]["Text3"]}"*/ "200"),
                                 ],
                               ),
                             ],
