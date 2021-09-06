@@ -261,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             new RegistrationScreen()));
                   },
                   child: Text(
-                    "SignUp",
+                    "Signup",
                     style: TextStyle(
                         color: appPrimaryMaterialColor,
                         fontWeight: FontWeight.w800),
